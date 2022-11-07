@@ -24,7 +24,9 @@ namespace HouseApp
             try
             {
                 if (newAddress?.Length > 5)
+                {
                     Address = newAddress;
+                }
                 else
                 {
                     changeAddressResponse.Error = true;
@@ -43,9 +45,13 @@ namespace HouseApp
         public override string ToString()
         {
             if (!string.IsNullOrWhiteSpace(Nickname))
+            {
                 return Nickname;
+            }
             else
+            {
                 return Address;
+            }
         }
 
         public bool Equals(House? house) => Address.Trim().ToLower() == house?.Address.Trim().ToLower();

@@ -57,9 +57,13 @@ namespace HouseApp.Helpers
                         var firstHouseNewAddress = Console.ReadLine()?.Trim();
 
                         var result = getAddressAndNicknameFromUserResponse.House.ChangeAddress(firstHouseNewAddress);
+
                         isChanged = !result.Error;
+
                         if (result.Error)
+                        {
                             Console.WriteLine(result.ErrorMessage);
+                        }
                     }
 
                     Console.WriteLine($"{house} house new address is: {getAddressAndNicknameFromUserResponse.House.Address}");
