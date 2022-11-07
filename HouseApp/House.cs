@@ -54,6 +54,23 @@ namespace HouseApp
             }
         }
 
-        public bool Equals(House? house) => Address.Trim().ToLower() == house?.Address.Trim().ToLower();
+        public override bool Equals(object? obj)
+        {
+            if (obj is House house)
+            {
+                return house.Address.Trim().ToLower() == Address.Trim().ToLower();
+            }
+
+            return false;
+        }
+
+        public static bool operator == (House first, House second) => first.Equals(second);
+
+        public static bool operator != (House first, House second) => !(first == second);
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Address);
+        }
     }
 }
