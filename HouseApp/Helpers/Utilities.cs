@@ -1,4 +1,6 @@
-﻿namespace HouseApp
+﻿using HouseApp.Responses;
+
+namespace HouseApp.Helpers
 {
     internal class Utilities
     {
@@ -7,27 +9,27 @@
             var getAddressAndNicknameFromUserResponse = new GetAddressAndNicknameFromUserResponse
             {
                 Error = false,
-                ErrorMessage = String.Empty
+                ErrorMessage = string.Empty
             };
 
             try
             {
                 //Get user's address
-                var address = String.Empty;
+                var address = string.Empty;
                 while (address.Length < 5)
                 {
                     Console.Write($"Please, enter {house} house address (more then 5 letters):");
                     var enteredAddress = Console.ReadLine();
-                    address = enteredAddress == null ? String.Empty : enteredAddress.Trim();
+                    address = enteredAddress == null ? string.Empty : enteredAddress.Trim();
                 }
 
                 Console.WriteLine($"{house} house address is: {address}");
 
                 //Get user's nickname
-                var nickname = String.Empty;
+                var nickname = string.Empty;
                 Console.Write($"Please, enter {house} house nickname (if not necessary, just press Enter):");
                 nickname = Console.ReadLine()?.Trim();
-                Console.WriteLine(!string.IsNullOrWhiteSpace(nickname) 
+                Console.WriteLine(!string.IsNullOrWhiteSpace(nickname)
                     ? $"{house} house nickname is: {nickname}"
                     : $"You haven't entered {house} house nickname.");
 
@@ -37,9 +39,9 @@
                 };
 
                 //Get user's changed address
-                var changeAddressConfirmationValue = String.Empty;
+                var changeAddressConfirmationValue = string.Empty;
 
-                while (changeAddressConfirmationValue != "Y" && (changeAddressConfirmationValue != "N"))
+                while (changeAddressConfirmationValue != "Y" && changeAddressConfirmationValue != "N")
                 {
                     Console.Write($"Do you want to change {house} house address? (Y or N):");
                     changeAddressConfirmationValue = Console.ReadLine()?.Trim().ToUpper();

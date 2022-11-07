@@ -1,4 +1,6 @@
-﻿namespace HouseApp
+﻿using HouseApp.Responses;
+
+namespace HouseApp
 {
     internal class House
     {
