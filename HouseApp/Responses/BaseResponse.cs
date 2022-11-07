@@ -1,4 +1,4 @@
-﻿namespace HouseApp
+﻿namespace HouseApp.Responses
 {
     internal class BaseResponse
     {

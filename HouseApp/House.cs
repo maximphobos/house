@@ -1,4 +1,6 @@
-﻿namespace HouseApp
+﻿using HouseApp.Responses;
+
+namespace HouseApp
 {
     internal class House
     {
@@ -22,7 +24,9 @@
             try
             {
                 if (newAddress?.Length > 5)
+                {
                     Address = newAddress;
+                }
                 else
                 {
                     changeAddressResponse.Error = true;
@@ -41,11 +45,32 @@
         public override string ToString()
         {
             if (!string.IsNullOrWhiteSpace(Nickname))
+            {
                 return Nickname;
+            }
             else
+            {
                 return Address;
+            }
         }
 
-        public bool Equals(House? house) => Address.Trim().ToLower() == house?.Address.Trim().ToLower();
+        public override bool Equals(object? obj)
+        {
+            if (obj is House house)
+            {
+                return house.Address.Trim().ToLower() == Address.Trim().ToLower();
+            }
+
+            return false;
+        }
+
+        public static bool operator == (House first, House second) => first.Equals(second);
+
+        public static bool operator != (House first, House second) => !(first == second);
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Address);
+        }
     }
 }

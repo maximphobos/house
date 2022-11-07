@@ -1,4 +1,5 @@
 ﻿using HouseApp;
+using HouseApp.Helpers;
 
 var firstHouse = Utilities.GetAddressAndNicknameFromUser(Houses.First);
 
